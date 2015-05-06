@@ -17,11 +17,9 @@
       return this.last().get('order') + 1;
     },
 
-    // Todos are sorted by their original insertion order.
     comparator: function( playlist ) {
       return playlist.get('playlist');
     }
   });
 
-  // Create our global collection of **Todos**.
   app.Playlist = new PlaylistList();
