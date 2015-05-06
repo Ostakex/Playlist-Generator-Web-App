@@ -18,27 +18,32 @@ require('../vendor/autoload.php'); ?>
 </head>
 <body>
   <div class="site-wrapper">
-
       <div class="site-wrapper-inner">
-
         <div class="cover-container">
-
           <div class="cover-heading">
+
             <img src="img/banner.png" class"img-responsive">
+
           </div>
+
           <div class="cover-main">
             <div class="row">
+
               <p class="lead">Submit an artists name to generate a playlist of songs similar to the artist</p>
+
               <div class="col-lg-2"></div>
               <form action="" method="POST">
+
               <div class="col-lg-8">
                 <div class="input-group">
+
                   <input type="text" class="form-control" placeholder="Artist name" name="artist">
                   <span class="input-group-btn">
                     <button class="btn btn-default" type="button">Go</button>
                   </span>
-                </div><!-- /input-group -->
-              </div><!-- /.col-lg-8 -->
+
+                </div>
+              </div>
               <div class="col-lg-2"></div>
             </div><!-- /.row -->
             <div class="panel panel-default" class="result">
@@ -58,8 +63,11 @@ require('../vendor/autoload.php'); ?>
                     </th>
                   </tr>
                 </thead>
+
                 <?php include 'php/apiresult.php'; ?>
+
               </table>
+
                 <ul id="filters" class="nav nav-pills">
                   <li role="presentation" class="active">
                     <a href="#/">New</a>
@@ -68,17 +76,10 @@ require('../vendor/autoload.php'); ?>
                     <a href="#/saved">Saved</a>
                   </li>
                 </ul>
-          </div>
 
-          <div class="mastfoot">
-            <div class="inner">
             </div>
-          </div>
-
         </div>
-
       </div>
-
     </div>
 
   <script src="js/lib/jquery.min.js"></script>
