@@ -18,14 +18,14 @@ function printPlaylist() {
 	
 	foreach($playlist as $artistname) {
 		$songname = explode(":", $artistname);
-		echo "<tr>
+		echo "<a href='https://musicbrainz.org/artist/'" . urlencode($songname[3]) . "><tr>
 			<th scope='row'> " . $x . " </th>
 		";
 		echo "<td> " . $songname[0] . " </td>
 		";
 		echo "<td> " . $songname[1] . " </td>
 		";
-		echo "</tr>
+		echo "</tr></a>
 		";
 		$x++;
 	}
@@ -46,7 +46,7 @@ function getArtist() {
 			urlencode($name) . '&limit=10&api_key=5f64776005b0b9fbd3b7e374b8073083');
 
 		foreach($xmlsongdata->toptracks->track as $track) {
-			array_push($playlist, $name . ":" . $track->name);
+			array_push($playlist, $name . ":" . $track->name . ":" . $track->mbid);
 		}
 	}	
 }
