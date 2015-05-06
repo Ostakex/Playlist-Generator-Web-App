@@ -1,5 +1,4 @@
 <?php include 'php/bgrandom.php'; 
-require('../vendor/autoload.php'); ?>
 <!doctype html>
 <html lang="en">
 <head>
