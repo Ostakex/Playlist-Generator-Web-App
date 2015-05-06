@@ -1,4 +1,4 @@
-<?php include 'php/bgrandom.php'; 
+<?php include 'php/bgrandom.php'; ?>
 <!doctype html>
 <html lang="en">
 <head>
