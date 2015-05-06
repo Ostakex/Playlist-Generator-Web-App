@@ -1,39 +1,61 @@
- // js/views/app.js
-
   var app = app || {};
 
-  // The Application
-  // ---------------
-
-  // Our overall **AppView** is the top-level piece of UI.
   app.AppView = Backbone.View.extend({
 
-    // Instead of generating a new element, bind to the existing skeleton of
-    // the App already present in the HTML.
     el: '#playlistapp',
 
-    // At initialization we bind to the relevant events on the `Todos`
-    // collection, when items are added or changed.
+    events: {
+      'keypress #new-todo': 'createOnEnter',
+    },
+
     initialize: function() {
       this.$input = this.$('#new-playlist');
       this.$footer = this.$('#footer');
       this.$main = this.$('#main');
 
-      this.listenTo(app.Todos, 'add', this.addOne);
-      this.listenTo(app.Todos, 'reset', this.addAll);
+      this.listenTo(app.Playlist, 'add', this.addOne);
+      this.listenTo(app.Playlist, 'reset', this.addAll);
+
+      // New
+      this.listenTo(app.Playlist,'filter', this.filterAll);
+      this.listenTo(app.Playlist, 'all', this.render);
+
+      app.Playlist.fetch();
     },
 
-    // Add a single todo item to the list by creating a view for it, and
-    // appending its element to the `<ul>`.
     addOne: function( playlist ) {
-      var view = new app.TodoView({ model: playlist });
+      var view = new app.TodoView({ model: todo });
       $('#playlist-list').append( view.render().el );
     },
 
-    // Add all items in the **Todos** collection at once.
     addAll: function() {
       this.$('#playlist-list').html('');
-      app.Todos.each(this.addOne, this);
-    }
+      app.Playlist.each(this.addOne, this);
+    },
 
+    filterOne : function (playlist) {
+      todo.trigger('visible');
+    },
+
+    filterAll : function () {
+      app.Playlist.each(this.filterOne, this);
+    },
+
+
+    newAttributes: function() {
+      return {
+        title: this.$input.val().trim(),
+        order: app.Todos.nextOrder(),
+        completed: false
+      };
+    },
+
+    createOnEnter: function( event ) {
+      if ( event.which !== ENTER_KEY || !this.$input.val().trim() ) {
+        return;
+      }
+
+      app.Playlist.create( this.newAttributes() );
+      this.$input.val('');
+    }
   });
