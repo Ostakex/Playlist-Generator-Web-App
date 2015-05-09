@@ -78,6 +78,11 @@
 
             </div>
         </div>
+        <div class="mastfoot">
+            <div class="inner">
+              <p>Gert af Ingi Þór Aðalsteinsson - <a href="https://www.youtube.com/watch?v=hleHjQj7BlA">Kynning</a></p>
+            </div>
+          </div>
       </div>
     </div>
 
